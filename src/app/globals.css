@@ -1,0 +1,226 @@
+/* Optimize Google Fonts loading */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+/* PP Pangaia Font Family - Custom font declarations */
+@font-face {
+  font-family: 'PP Pangaia';
+  src: url('/fonts/PPPangaia-Medium-BF654c530cc86d5.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'PP Pangaia';
+  src: url('/fonts/PPPangaia-Ultralight-BF654c530cd00f1.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'PP Pangaia';
+  src: url('/fonts/PPPangaia-UltralightItalic-BF654c530ca889f.woff') format('woff');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'PP Pangaia';
+  src: url('/fonts/PPPangaia-Medium-BF654c530cc86d5.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'PP Pangaia';
+  src: url('/fonts/PPPangaia-MediumItalic-BF654c530bedffb.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'PP Pangaia';
+  src: url('/fonts/PPPangaia-Bold-BF654c530cc27f8.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'PP Pangaia';
+  src: url('/fonts/PPPangaia-BoldItalic-BF654c530c8d2fa.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --background: #F6F6EF;
+  --foreground: #171717;
+  
+  /* Brand Colors */
+  --primary: #B09244;          /* Main brand gold */
+  --primary-dark: #AC6231;     /* Darker gold/copper for subtitles */
+  --text-dark: #17232D;        /* Dark charcoal for body text */
+  --text-medium: #333333;      /* Medium gray for descriptions */
+  --text-sage: #5A6647;        /* Sage green for accents */
+  --cream: #F1E3D0;            /* Cream background */
+  --light-gray: #F2F2F4;       /* Light gray for buttons */
+  
+  /* Legacy amber colors (kept for compatibility) */
+  --amber-50: #fffbeb;
+  --amber-100: #fef3c7;
+  --amber-600: #d97706;
+  --amber-700: #b45309;
+  --amber-800: #92400e;
+  --amber-900: #78350f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* Base typography with optimized font stack */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'PP Pangaia', 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+}
+
+/* Apply consistent background to all page containers */
+.page-container,
+.min-h-screen {
+  background-color: #F6F6EF;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--amber-50);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--amber-600);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--amber-700);
+}
+
+/* Custom animations */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out;
+}
+
+/* Button hover effects */
+.btn-hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--amber-600), var(--amber-800));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Image hover effects */
+.image-hover-zoom {
+  transition: transform 0.3s ease;
+}
+
+.image-hover-zoom:hover {
+  transform: scale(1.05);
+}
+
+/* Brand Color Utilities */
+.text-primary {
+  color: var(--primary);
+}
+
+.text-primary-dark {
+  color: var(--primary-dark);
+}
+
+.text-dark {
+  color: var(--text-dark);
+}
+
+.text-medium {
+  color: var(--text-medium);
+}
+
+.text-sage {
+  color: var(--text-sage);
+}
+
+.bg-primary {
+  background-color: var(--primary);
+}
+
+.bg-primary-dark {
+  background-color: var(--primary-dark);
+}
+
+.bg-cream {
+  background-color: var(--cream);
+}
+
+.bg-light-gray {
+  background-color: var(--light-gray);
+}

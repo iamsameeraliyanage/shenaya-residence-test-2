@@ -1,0 +1,76 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "accommodation": "Unterkunft",
+    "discover": "Entdecken",
+    "dining": "Restaurant",
+    "gallery": "Galerie",
+    "reviews": "Bewertungen",
+    "contact": "Kontakt",
+    "promotions": "Angebote"
+  },
+  "hero": {
+    "title": "Wir bieten erstklassige Unterkünfte.",
+    "subtitle": "Machen Sie sich keine Sorgen über die Qualität des Service.",
+    "makeReservation": "Reservierung vornehmen"
+  },
+  "features": {
+    "title": "Premium Unterkünfte & Annehmlichkeiten",
+    "subtitle": "Erleben Sie das Feinste in luxuriösen Unterkünften mit unseren sorgfältig kuratierten Annehmlichkeiten und Dienstleistungen.",
+    "luxury": {
+      "title": "Luxus-Suiten",
+      "description": "Geräumige und elegant gestaltete Zimmer mit modernen Annehmlichkeiten und traditionellen Akzenten."
+    },
+    "location": {
+      "title": "Erstklassige Lage", 
+      "description": "Ideal gelegen in der Nähe kultureller Sehenswürdigkeiten und natürlicher Attraktionen Sri Lankas."
+    },
+    "service": {
+      "title": "Außergewöhnlicher Service",
+      "description": "24/7 persönlicher Service, um sicherzustellen, dass alle Ihre Bedürfnisse mit Exzellenz erfüllt werden."
+    }
+  },
+  "about": {
+    "title": "Willkommen bei Shenaya, ein Luxus-Residenz-Erlebnis",
+    "description1": "Entdecken Sie die perfekte Mischung aus traditioneller sri-lankischer Gastfreundschaft und modernem Luxus. Unsere Residenz bietet ein unvergessliches Erlebnis mit erstklassigen Annehmlichkeiten und atemberaubenden Ausblicken auf das antike kulturelle Erbe.",
+    "description2": "Jedes Detail wurde sorgfältig gestaltet, um Ihnen den ultimativen Komfort und die Eleganz während Ihres Aufenthalts zu bieten.",
+    "learnMore": "Mehr erfahren"
+  },
+  "booking": {
+    "title": "Bereit, Luxus zu erleben?",
+    "subtitle": "Buchen Sie Ihren Aufenthalt in der Shenaya Residenz und tauchen Sie ein in die perfekte Mischung aus Komfort, Eleganz und kulturellem Erbe."
+  },
+  "testimonials": {
+    "title": "Was unsere Gäste sagen",
+    "subtitle": "Hören Sie von Reisenden, die die Magie der Shenaya Residenz erlebt haben"
+  },
+  "welcome": "Wir bieten erstklassige Unterkünfte",
+  "book_now": "Jetzt buchen",
+  "name": "Name",
+  "email": "E-Mail",
+  "phone": "Telefon", 
+  "message": "Nachricht",
+  "submit": "Absenden",
+  "booking_form_title": "Reservierung vornehmen",
+  "book_your_stay": "Buchen Sie Ihren Aufenthalt",
+  "contact_us": "Kontaktieren Sie uns",
+  "description": "Machen Sie sich keine Sorgen über die Qualität des Service.",
+  "check_in_date": "Anreisedatum",
+  "check_out_date": "Abreisedatum",
+  "guests": "Gäste",
+  "rooms": "Zimmer",
+  "room_type": "Zimmertyp",
+  "special_requests": "Sonderwünsche",
+  "accept_terms": "Ich akzeptiere die Allgemeinen Geschäftsbedingungen",
+  "form_success": "Ihre Buchung war erfolgreich!",
+  "form_error": "Es gab ein Problem mit Ihrer Buchung. Bitte versuchen Sie es erneut.",
+  "deluxe": "Deluxe",
+  "family_suite": "Familiensuite",
+  "ocean_view": "Meerblick",
+  "check_out_after_check_in": "Das Abreisedatum muss nach dem Anreisedatum liegen.",
+  "invalid_email": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+  "luxury_experience": "Erleben Sie Luxus und Komfort in der Shenaya Residenz",
+  "cultural_heritage": "Tauchen Sie ein in das kulturelle Erbe Sri Lankas",
+  "make_reservation": "Reservierung vornehmen",
+  "explore_more": "Mehr entdecken"
+}
