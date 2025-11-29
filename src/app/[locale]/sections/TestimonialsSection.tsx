@@ -24,7 +24,7 @@ export default function TestimonialsSection() {
       );
     });
     return () => timeoutIds.forEach(clearTimeout);
-  }, []);
+  }, [controlsArray]);
 
   return (
     <section className="container mx-auto px-6 py-16 relative z-10">
