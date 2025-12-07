@@ -6,11 +6,18 @@ export interface ContactInfo {
 }
 
 export interface ContactFormField {
-  type: 'text' | 'email' | 'tel' | 'select';
+  type: 'text' | 'email' | 'tel' | 'select' | 'textarea';
   name: string;
   placeholder: string;
   required: boolean;
   options?: Array<{ value: string; label: string }>;
+}
+
+export interface ContactPageContent {
+  submitButton: string;
+  submitting: string;
+  successMessage: string;
+  errorMessage: string;
 }
 
 export interface MapLocation {
@@ -48,20 +55,19 @@ export const contactFormFields: ContactFormField[] = [
     required: true
   },
   {
-    type: 'select',
-    name: 'subject',
-    placeholder: 'How did you hear about us?',
-    required: false,
-    options: [
-      { value: '', label: 'How did you hear about us?' },
-      { value: 'google', label: 'Google Search' },
-      { value: 'social-media', label: 'Social Media' },
-      { value: 'friend', label: 'Friend/Family' },
-      { value: 'travel-agent', label: 'Travel Agent' },
-      { value: 'other', label: 'Other' }
-    ]
+    type: 'textarea',
+    name: 'message',
+    placeholder: 'Message',
+    required: false
   }
 ];
+
+export const contactPageContent: ContactPageContent = {
+  submitButton: 'Send',
+  submitting: 'Sending...',
+  successMessage: 'Thank you! Your message has been sent successfully.',
+  errorMessage: 'There was an error sending your message. Please try again.'
+};
 
 export const mapLocation: MapLocation = {
   name: 'Residence Shenaya',

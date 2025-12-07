@@ -25,10 +25,33 @@ export default function DiningPage() {
   const chefInfo = locale === 'de' ? chefInfoDE : chefInfoEN;
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#F6F6EF' }}>
+    <div className="min-h-screen relative overflow-hidden" style={{ backgroundColor: '#F6F6EF' }}>
+       {/* Decorative Background Vector 1 */}
+            <div className="absolute top-[33%] left-0 w-1/2 h-3/4 pointer-events-none z-0">
+              <Image
+                src="/images/home/Vector4.jpg"
+                alt="Decorative background"
+                fill
+                className="object-contain object-left-top opacity-40 mix-blend-multiply"
+                priority
+                style={{ filter: 'brightness(1.1) contrast(0.9)' }}
+              />
+            </div>
+      
+            {/* Decorative Background Vector 2 */}
+            <div className="absolute top-[52%] right-0 w-1/2 h-full pointer-events-none z-0">
+              <Image
+                src="/images/home/Vector5.jpg"
+                alt="Decorative background"
+                fill
+                className="object-contain object-right-top opacity-40 mix-blend-multiply"
+                priority
+                style={{ filter: 'brightness(1.1) contrast(0.9)' }}
+              />
+            </div>
       <Header />
 
-      <main>
+      <main className="relative z-10">
         {/* Hero Section */}
           <div className="relative min-h-screen" style={{ backgroundColor: '#B09244' }}>
             <div className="container mx-auto px-4 sm:px-6 py-10 sm:py-16">
@@ -214,12 +237,31 @@ export default function DiningPage() {
         </div>
 
         {/* Chef Section */}
-        <div className="py-10 sm:py-16" style={{ backgroundColor: '#F6F6EF' }}>
+        <div className="py-10 sm:py-16 relative z-10">
           <div className="container mx-auto px-4 sm:px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
               {/* Chef Photo */}
               <div className="relative flex justify-center mb-8 lg:mb-0">
+                {/* Decorative Leaf Image - Top Left */}
+                <div className="absolute top-8 -left-26 sm:top-4 sm:-left-20 md:top-0 md:-left-24 lg:-top-4 lg:-left-32 w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 z-20">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.8 }}
+                    className="w-full h-full relative"
+                  >
+                    <Image
+                      src="/images/dining/Leaf1.jpg"
+                      alt="Decorative Leaf"
+                      fill
+                      className="object-contain opacity-20 mix-blend-multiply"
+                      style={{ filter: 'brightness(1.1) contrast(0.9)' }}
+                    />
+                  </motion.div>
+                </div>
+
                 <div className="relative w-40 h-56 sm:w-56 sm:h-80 md:w-[220px] md:h-[320px] lg:w-[300px] lg:h-[400px] mx-auto">
                   <div className="absolute inset-0 rounded-full overflow-hidden">
                     <motion.div
@@ -252,13 +294,32 @@ export default function DiningPage() {
               </div>
 
               {/* Chef Text */}
-              <div>
+              <div className="relative">
+                {/* Decorative Leaf Image - Top Right */}
+                <div className="absolute top-8 -right-16 sm:top-4 sm:-right-20 md:top-0 md:-right-24 lg:-top-4 lg:-right-32 w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 z-20">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8, rotate: 0 }}
+                    whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.8 }}
+                    className="w-full h-full relative"
+                  >
+                    <Image
+                      src="/images/dining/Leaf2.jpg"
+                      alt="Decorative Leaf"
+                      fill
+                      className="object-contain opacity-15 mix-blend-multiply"
+                      style={{ filter: 'brightness(1.2) contrast(0.8)' }}
+                    />
+                  </motion.div>
+                </div>
+
                 <motion.h2
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.5 }}
                   transition={{ duration: 0.7 }}
-                  className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4 sm:mb-6"
+                  className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4 sm:mb-6 relative z-10"
                 >
                   {chefInfo.title.split('\n').map((line, index) => (
                     <span key={index}>
@@ -272,7 +333,7 @@ export default function DiningPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.5 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
-                  className="text-gray-600 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8"
+                  className="text-gray-600 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 relative z-10"
                 >
                   {chefInfo.description.split('\n').map((line, index) => (
                     <span key={index}>

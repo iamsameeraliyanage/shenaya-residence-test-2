@@ -1,20 +1,43 @@
 "use client";
+import { useLocale } from 'next-intl';
 import Link from 'next/link';
+import Image from 'next/image';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import RoomCarousel from '@/components/carousels/RoomCarousel';
 import { useRoomSelection } from '@/contexts/RoomSelectionContext';
 import { motion } from 'framer-motion';
+import { rooms as roomsEN, roomLabels as roomLabelsEN, accommodationPageContent as accommodationPageContentEN } from '@/data/rooms/roomsData';
+import { rooms as roomsDE, roomLabels as roomLabelsDE, accommodationPageContent as accommodationPageContentDE } from '@/data/rooms/roomsData.de';
 
 
 export default function AccommodationPage() {
+  const locale = useLocale();
+  const rooms = locale === 'de' ? roomsDE : roomsEN;
+  const roomLabels = locale === 'de' ? roomLabelsDE : roomLabelsEN;
+  const pageContent = locale === 'de' ? accommodationPageContentDE : accommodationPageContentEN;
   const { selectedRooms } = useRoomSelection();
 
   return (
-    <div className="min-h-screen bg-[#F6F6EF]">
-      <Header />
+    <div className="min-h-screen bg-[#F6F6EF] relative overflow-hidden">
+            {/* Decorative Background Vector 1 */}
+            <div className="absolute top-0 right-0 w-1/2 h-full pointer-events-none z-0">
+              <Image
+                src="/images/home/Vector1.jpg"
+                alt="Decorative background"
+                fill
+                className="object-contain object-right-top opacity-40 mix-blend-multiply"
+                priority
+                style={{ filter: 'brightness(1.1) contrast(0.9)' }}
+              />
+            </div>
+      
+      {/* Header with proper z-index */}
+      <div className="relative z-10">
+        <Header />
+      </div>
 
-      <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+      <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 relative z-10">
         {/* Page Header Section */}
         <motion.section
           className="text-center mb-6 sm:mb-8"
@@ -23,7 +46,7 @@ export default function AccommodationPage() {
           transition={{ duration: 0.7 }}
         >
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#B8860B]">
-            Our Accommodations
+            {pageContent.title}
           </h1>
         </motion.section>
 
@@ -34,7 +57,7 @@ export default function AccommodationPage() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.2 }}
         >
-          <RoomCarousel />
+          <RoomCarousel rooms={rooms} labels={roomLabels} />
         </motion.section>
 
         {/* Room Selection Summary Section */}
@@ -54,16 +77,16 @@ export default function AccommodationPage() {
               <div>
                 <h3 className="text-base sm:text-lg font-semibold text-[#B8860B] mb-1 sm:mb-2">
                   {selectedRooms.length === 0
-                    ? "Browse through our 8 available rooms with preferred features."
+                    ? pageContent.browseMessage
                     : selectedRooms.length === 1
-                    ? "You've selected 1 room with your preferred features."
-                    : `You've selected ${selectedRooms.length} rooms with your preferred features.`
+                    ? pageContent.oneRoomSelected
+                    : pageContent.multipleRoomsSelected.replace('{count}', selectedRooms.length.toString())
                   }
                 </h3>
                 <p className="text-sm sm:text-base text-gray-600">
                   {selectedRooms.length === 0
-                    ? "Select your preferred rooms and continue to complete your reservation."
-                    : "Review your selections and continue to complete your reservation."
+                    ? pageContent.noRoomsInfo
+                    : pageContent.reviewInfo
                   }
                 </p>
               </div>
@@ -80,7 +103,7 @@ export default function AccommodationPage() {
                   transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.8 }}
                   whileTap={{ scale: 1.05 }}
                 >
-                  Proceed to Reservation
+                  {pageContent.proceedButton}
                 </motion.button>
               </Link>
             </div>
@@ -88,7 +111,10 @@ export default function AccommodationPage() {
         </motion.section>
       </main>
 
-      <Footer />
+      {/* Footer with proper z-index */}
+      <div className="relative z-10">
+        <Footer />
+      </div>
     </div>
   );
 }

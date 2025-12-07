@@ -28,6 +28,19 @@ export default function ReviewsPage() {
 
   return (
       <div className="min-h-screen bg-[#F6F6EF]">
+        <div className="relative overflow-hidden">
+              {/* Decorative Background Vector 1 */}
+              <div className="absolute top-0 right-0 w-1/2 h-full pointer-events-none z-0">
+                <Image
+                  src="/images/home/Vector1.jpg"
+                  alt="Decorative background"
+                  fill
+                  className="object-contain object-right-top opacity-40 mix-blend-multiply"
+                  priority
+                  style={{ filter: 'brightness(1.1) contrast(0.9)' }}
+                />
+              </div>
+        
         <Header />
         <main className="container mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-10 md:py-12">
           {/* Reviews Section */}
@@ -111,17 +124,18 @@ export default function ReviewsPage() {
                 viewport={{ once: true, amount: 0.6 }}
                 transition={{ duration: 0.5, type: 'spring', stiffness: 300, damping: 28 }}
               >
-                <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-4 sm:mb-0 flex-1 text-center sm:text-left">Be the next person to review us!</h2>
+                <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-4 sm:mb-0 flex-1 text-center sm:text-left">{reviewsPageContent.callToAction.text}</h2>
                 <span
                   className="text-amber-600 hover:text-amber-700 text-primary flex items-center gap-2 text-base sm:text-lg cursor-pointer sm:ml-8 whitespace-nowrap"
                   onClick={() => window.location.href = '/reservation'}
                 >
-                  Make reservation <span className="text-xl sm:text-2xl">→</span>
+                  {reviewsPageContent.callToAction.buttonText} <span className="text-xl sm:text-2xl">→</span>
                 </span>
               </motion.div>
             </motion.div>
           </motion.div>
         </main>
+        </div>
         <Footer />
       </div>
   );

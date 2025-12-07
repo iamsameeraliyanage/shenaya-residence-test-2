@@ -6,11 +6,18 @@ export interface ContactInfo {
 }
 
 export interface ContactFormField {
-  type: 'text' | 'email' | 'tel' | 'select';
+  type: 'text' | 'email' | 'tel' | 'select' | 'textarea';
   name: string;
   placeholder: string;
   required: boolean;
   options?: Array<{ value: string; label: string }>;
+}
+
+export interface ContactPageContent {
+  submitButton: string;
+  submitting: string;
+  successMessage: string;
+  errorMessage: string;
 }
 
 export interface MapLocation {
@@ -48,20 +55,19 @@ export const contactFormFields: ContactFormField[] = [
     required: false
   },
   {
-    type: 'select',
-    name: 'subject',
-    placeholder: 'Wie haben Sie von uns gehört?',
-    required: false,
-    options: [
-      { value: '', label: 'Wie haben Sie von uns gehört?' },
-      { value: 'google', label: 'Google Suche' },
-      { value: 'social-media', label: 'Soziale Medien' },
-      { value: 'friend', label: 'Freund/Familie' },
-      { value: 'travel-agent', label: 'Reisebüro' },
-      { value: 'other', label: 'Andere' }
-    ]
+    type: 'textarea',
+    name: 'message',
+    placeholder: 'Nachricht',
+    required: false
   }
 ];
+
+export const contactPageContent: ContactPageContent = {
+  submitButton: 'Senden',
+  submitting: 'Wird gesendet...',
+  successMessage: 'Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.',
+  errorMessage: 'Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.'
+};
 
 export const mapLocation: MapLocation = {
   name: 'Residence Shenaya',

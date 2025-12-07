@@ -1,19 +1,23 @@
 "use client";
 import { useState } from 'react';
-import { rooms } from '@/data/rooms/roomsData';
+import { Room, RoomLabels } from '@/data/rooms/roomsData';
 
 interface RoomSelectorProps {
   selectedRooms: string[];
   onRoomSelection: (roomIds: string[]) => void;
   numberOfGuests: string;
   onGuestChange: (guests: string) => void;
+  labels: RoomLabels;
+  rooms: Room[];
 }
 
 export default function RoomSelector({ 
   selectedRooms, 
   onRoomSelection, 
   numberOfGuests, 
-  onGuestChange 
+  onGuestChange,
+  labels,
+  rooms
 }: RoomSelectorProps) {
   const [isRoomDropdownOpen, setIsRoomDropdownOpen] = useState(false);
 
@@ -25,9 +29,9 @@ export default function RoomSelector({
   };
 
   const getRoomSelectionText = () => {
-    if (selectedRooms.length === 0) return "Select the room(s)";
-    if (selectedRooms.length === 1) return "1 room selected";
-    return `${selectedRooms.length} rooms selected`;
+    if (selectedRooms.length === 0) return labels.selectRoomsPlaceholder;
+    if (selectedRooms.length === 1) return `1 ${labels.roomSelected}`;
+    return `${selectedRooms.length} ${labels.roomsSelected}`;
   };
 
   // Close dropdown when clicking outside
@@ -38,14 +42,14 @@ export default function RoomSelector({
   return (
     <div>
       <h2 className="text-2xl font-semibold mb-6" style={{ color: '#B8860B' }}>
-        Select Room(s) & Guests
+        {labels.title}
       </h2>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Room Selection Dropdown */}
         <div className="relative">
           <label htmlFor="roomSelection" className="block text-sm font-medium text-gray-700 mb-2">
-            Select the room(s)
+            {labels.selectRoomsLabel}
           </label>
           <div className="relative">
             <button
@@ -54,7 +58,7 @@ export default function RoomSelector({
               className="w-full px-4 py-3 text-left border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent bg-white flex justify-between items-center"
               style={{ height: '48px' }}
             >
-              <span className={selectedRooms.length === 0 ? "text-gray-500" : "text-gray-900"}>
+              <span className={selectedRooms.length === 0 ? "text-gray-600" : "text-gray-900"}>
                 {getRoomSelectionText()}
               </span>
               <svg 
@@ -103,11 +107,12 @@ export default function RoomSelector({
                             {/* Header with checkbox and room info */}
                             <div className="flex items-start mb-4" style={{ paddingLeft: '40px' }}>
                               <div className="flex-1">
-                                <h3 className="text-2xl font-normal text-black mb-1" style={{ fontFamily: 'serif' }}>{room.name}</h3>
+                                <h3 className="text-2xl font-normal text-black mb-1" style={{ fontFamily: 'serif' }}>{room.type}</h3>
                                 <p className="text-base font-medium mb-1" style={{ color: '#B8860B' }}>
-                                  Double Room
+                                  {room.name}
                                 </p>
-                                <p className="text-sm text-black">Up to {room.specifications.bedrooms || 2} guests</p>
+                                <p className="text-sm text-black">{room.capacity}</p>
+                                <p className="text-sm text-gray-600">{room.view}</p>
                               </div>
                               <div className="text-right ml-auto">
                                 {/* Price positioned in top-right */}
@@ -122,12 +127,20 @@ export default function RoomSelector({
                               {/* Create a simple amenities array based on room data */}
                               {(() => {
                                 const amenities = [];
-                                if (room.specifications?.bedrooms) amenities.push(`${room.specifications.bedrooms} Bedroom${room.specifications.bedrooms > 1 ? 's' : ''}`);
-                                if (room.specifications?.bathrooms) amenities.push(`${room.specifications.bathrooms} Bathroom${room.specifications.bathrooms > 1 ? 's' : ''}`);
-                                if (room.amenities.freeWifi) amenities.push('WiFi Available');
-                                if (room.amenities.airConditioning) amenities.push('A/C Available');
                                 
-                                return amenities.map((amenity, index) => (
+                                // Add specifications
+                                if (room.specifications.privateBath) amenities.push(labels.bathroom);
+                                if (room.specifications.doubleBed) amenities.push('Double Bed');
+                                if (room.specifications.queenSizeBed) amenities.push('Queen Size Bed');
+                                if (room.specifications.sofaBed) amenities.push('Sofa Bed');
+                                
+                                // Add amenities
+                                if (room.amenities.wifi) amenities.push(labels.wifiAvailable);
+                                if (room.amenities.ac) amenities.push(labels.acAvailable);
+                                if (room.amenities.balcony) amenities.push('Balcony');
+                                if (room.amenities.tv) amenities.push(labels.television);
+                                
+                                return amenities.slice(0, 4).map((amenity, index) => (
                                   <div key={index} className="flex items-center">
                                     <span className="mr-2 text-blue-600">•</span>
                                     <span className="text-base text-blue-600">{amenity}</span>
@@ -149,19 +162,19 @@ export default function RoomSelector({
         {/* Guest Selection Dropdown */}
         <div>
           <label htmlFor="numberOfGuests" className="block text-sm font-medium text-gray-700 mb-2">
-            Number of Guests
+            {labels.numberOfGuestsLabel}
           </label>
           <select
             id="numberOfGuests"
             value={numberOfGuests}
             onChange={(e) => onGuestChange(e.target.value)}
-            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent bg-white"
+            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent bg-white text-gray-900"
             style={{ height: '48px' }}
           >
-            <option value="">Select number of guests</option>
+            <option value="" className="text-gray-600">{labels.numberOfGuestsPlaceholder}</option>
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
-              <option key={num} value={num.toString()}>
-                {num} {num === 1 ? 'Guest' : 'Guests'}
+              <option key={num} value={num.toString()} className="text-gray-900">
+                {num} {num === 1 ? labels.guest : labels.guests}
               </option>
             ))}
           </select>
@@ -171,7 +184,7 @@ export default function RoomSelector({
       {/* Selected Rooms Summary */}
       {selectedRooms.length > 0 && (
         <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-          <h4 className="font-semibold text-gray-900 mb-3">Selected Rooms:</h4>
+          <h4 className="font-semibold text-gray-900 mb-3">{labels.selectedRoomsTitle}</h4>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {selectedRooms.map((roomId) => {
               const room = rooms.find(r => r.id === roomId);
@@ -179,7 +192,7 @@ export default function RoomSelector({
                 <div key={roomId} className="flex justify-between items-center text-sm">
                   <span className="text-gray-700">{room.name}</span>
                   <span className="font-semibold" style={{ color: '#B8860B' }}>
-                    ${room.price}/night
+                    ${room.price}{labels.perNight}
                   </span>
                 </div>
               ) : null;
@@ -187,7 +200,7 @@ export default function RoomSelector({
           </div>
           <div className="mt-3 pt-3 border-t border-gray-200 flex justify-between items-center">
             <span className="text-sm font-semibold text-gray-900">
-              Total per night:
+              {labels.totalPerNight}
             </span>
             <span className="text-lg font-bold" style={{ color: '#B8860B' }}>
               ${selectedRooms.reduce((total, roomId) => {

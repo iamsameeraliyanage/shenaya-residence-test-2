@@ -1,5 +1,5 @@
 "use client";
-import { availableRooms } from "@/data/reservation/reservationData";
+import { availableRooms } from '@/data/reservation/reservationData';
 
 interface RoomSelectorProps {
   selectedRooms: string[];
@@ -8,26 +8,26 @@ interface RoomSelectorProps {
   onGuestChange: (guests: string) => void;
 }
 
-export default function RoomSelector({
-  selectedRooms,
-  onRoomSelection,
-  numberOfGuests,
-  onGuestChange,
+export default function RoomSelector({ 
+  selectedRooms, 
+  onRoomSelection, 
+  numberOfGuests, 
+  onGuestChange 
 }: RoomSelectorProps) {
   const handleRoomToggle = (roomId: string) => {
     const newSelection = selectedRooms.includes(roomId)
-      ? selectedRooms.filter((id) => id !== roomId)
+      ? selectedRooms.filter(id => id !== roomId)
       : [...selectedRooms, roomId];
     onRoomSelection(newSelection);
   };
 
   const guestOptions = [
-    { value: "", label: "Select number of guests" },
-    { value: "1", label: "1 Guest" },
-    { value: "2", label: "2 Guests" },
-    { value: "3", label: "3 Guests" },
-    { value: "4", label: "4 Guests" },
-    { value: "5", label: "5+ Guests" },
+    { value: '', label: 'Select number of guests' },
+    { value: '1', label: '1 Guest' },
+    { value: '2', label: '2 Guests' },
+    { value: '3', label: '3 Guests' },
+    { value: '4', label: '4 Guests' },
+    { value: '5', label: '5+ Guests' }
   ];
 
   return (
@@ -39,11 +39,10 @@ export default function RoomSelector({
             Select the room(s)
           </label>
           <div className="text-sm text-gray-500">
-            {selectedRooms.length} room{selectedRooms.length !== 1 ? "s" : ""}{" "}
-            selected
+            {selectedRooms.length} room{selectedRooms.length !== 1 ? 's' : ''} selected
           </div>
         </div>
-
+        
         <div className="w-64">
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Number of Guests
@@ -53,7 +52,7 @@ export default function RoomSelector({
             onChange={(e) => onGuestChange(e.target.value)}
             className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent"
           >
-            {guestOptions.map((option) => (
+            {guestOptions.map(option => (
               <option key={option.value} value={option.value}>
                 {option.label}
               </option>
@@ -69,8 +68,8 @@ export default function RoomSelector({
             key={room.id}
             className={`border rounded-lg p-4 cursor-pointer transition-all duration-200 ${
               selectedRooms.includes(room.id)
-                ? "border-yellow-600 bg-yellow-50 shadow-md"
-                : "border-gray-200 hover:border-gray-300"
+                ? 'border-yellow-600 bg-yellow-50 shadow-md'
+                : 'border-gray-200 hover:border-gray-300'
             }`}
             onClick={() => handleRoomToggle(room.id)}
           >
@@ -85,16 +84,11 @@ export default function RoomSelector({
                 />
                 <div>
                   <h3 className="font-semibold text-lg">{room.name}</h3>
-                  <span className="text-sm text-yellow-700 font-medium">
-                    {room.type}
-                  </span>
+                  <span className="text-sm text-yellow-700 font-medium">{room.type}</span>
                 </div>
               </div>
               <div className="text-right">
-                <div
-                  className="text-2xl font-bold"
-                  style={{ color: "#B8860B" }}
-                >
+                <div className="text-2xl font-bold" style={{ color: '#B8860B' }}>
                   ${room.price}
                 </div>
                 <div className="text-sm text-gray-600">{room.maxOccupancy}</div>
@@ -104,10 +98,7 @@ export default function RoomSelector({
             {/* Amenities */}
             <div className="space-y-1">
               {room.amenities.map((amenity, index) => (
-                <div
-                  key={index}
-                  className="flex items-center text-sm text-blue-600"
-                >
+                <div key={index} className="flex items-center text-sm text-blue-600">
                   <span className="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
                   {amenity}
                 </div>

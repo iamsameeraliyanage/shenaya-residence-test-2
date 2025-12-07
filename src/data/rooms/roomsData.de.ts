@@ -76,7 +76,7 @@ export interface AccommodationPageContent {
   proceedButton: string;
 }
 
-// Amenity icon mapping
+// Amenity icon mapping (same for all languages)
 export const amenityIcons = {
   balcony: "fi fi-ts-balcony",
   wifi: "fi fi-ts-wifi",
@@ -87,15 +87,15 @@ export const amenityIcons = {
 };
 
 export const amenityLabels: { [key: string]: string } = {
-  balcony: 'Balcony',
-  wifi: 'WiFi',
-  ac: 'Air Conditioning',
-  tv: 'Television',
-  teaCoffeeMaker: 'Tea/Coffee Maker',
-  miniFridge: 'Mini Fridge'
+  balcony: 'Balkon',
+  wifi: 'WLAN',
+  ac: 'Klimaanlage',
+  tv: 'Fernseher',
+  teaCoffeeMaker: 'Tee-/Kaffeemaschine',
+  miniFridge: 'Minikühlschrank'
 };
 
-// Specification icon mapping
+// Specification icon mapping (same for all languages)
 export const specificationIcons = {
   privateBath: "fi fi-ts-bath",
   doubleBed: "fi fi-ts-bed-alt",
@@ -104,67 +104,67 @@ export const specificationIcons = {
 };
 
 export const specificationLabels: { [key: string]: string } = {
-  privateBath: 'Private Bath',
-  doubleBed: 'Double Bed',
-  queenSizeBed: 'Queen Size Bed',
-  sofaBed: 'Sofa Bed'
+  privateBath: 'Privates Bad',
+  doubleBed: 'Doppelbett',
+  queenSizeBed: 'Queensize-Bett',
+  sofaBed: 'Schlafsofa'
 };
 
 export const roomLabels: RoomLabels = {
   // General room labels
-  perDay: 'per Day',
-  selectThisRoom: 'Select this Room',
-  roomSelected: 'Room Selected ✓',
-  roomFeatures: 'Room Features',
-  bedrooms: 'Bedrooms',
-  bedroom: 'Bedroom',
-  livingRooms: 'Living Rooms',
-  livingRoom: 'Living Room',
-  bathrooms: 'Bathrooms',
-  bathroom: 'Bathroom',
-  unitsAvailable: 'Available',
-  televisions: 'Televisions',
-  television: 'Television',
-  selected: 'Selected ✓',
-  previousImage: 'Previous image',
-  nextImage: 'Next image',
-  previousRoom: 'Previous room',
-  nextRoom: 'Next room',
+  perDay: 'pro Tag',
+  selectThisRoom: 'Dieses Zimmer wählen',
+  roomSelected: 'Zimmer ausgewählt ✓',
+  roomFeatures: 'Zimmerausstattung',
+  bedrooms: 'Schlafzimmer',
+  bedroom: 'Schlafzimmer',
+  livingRooms: 'Wohnzimmer',
+  livingRoom: 'Wohnzimmer',
+  bathrooms: 'Badezimmer',
+  bathroom: 'Badezimmer',
+  unitsAvailable: 'Verfügbar',
+  televisions: 'Fernseher',
+  television: 'Fernseher',
+  selected: 'Ausgewählt ✓',
+  previousImage: 'Vorheriges Bild',
+  nextImage: 'Nächstes Bild',
+  previousRoom: 'Vorheriges Zimmer',
+  nextRoom: 'Nächstes Zimmer',
   // Room selector specific labels
-  title: 'Select Room(s) & Guests',
-  selectRoomsLabel: 'Select the room(s)',
-  numberOfGuestsLabel: 'Number of Guests',
-  selectRoomsPlaceholder: 'Select the room(s)',
-  numberOfGuestsPlaceholder: 'Select number of guests',
-  roomsSelected: 'rooms selected',
-  doubleRoom: 'Double Room',
-  upToGuests: 'Up to',
-  guest: 'guest',
-  guests: 'guests',
-  wifiAvailable: 'WiFi Available',
-  acAvailable: 'A/C Available',
-  selectedRoomsTitle: 'Selected Rooms:',
-  perNight: '/night',
-  totalPerNight: 'Total per night:'
+  title: 'Zimmer & Gäste auswählen',
+  selectRoomsLabel: 'Zimmer auswählen',
+  numberOfGuestsLabel: 'Anzahl der Gäste',
+  selectRoomsPlaceholder: 'Zimmer auswählen',
+  numberOfGuestsPlaceholder: 'Anzahl der Gäste auswählen',
+  roomsSelected: 'Zimmer ausgewählt',
+  doubleRoom: 'Doppelzimmer',
+  upToGuests: 'Bis zu',
+  guest: 'Gast',
+  guests: 'Gäste',
+  wifiAvailable: 'WLAN verfügbar',
+  acAvailable: 'Klimaanlage verfügbar',
+  selectedRoomsTitle: 'Ausgewählte Zimmer:',
+  perNight: '/Nacht',
+  totalPerNight: 'Gesamt pro Nacht:'
 };
 
 export const accommodationPageContent: AccommodationPageContent = {
-  title: 'Our Accommodations',
-  browseMessage: 'Browse through our 8 available rooms with preferred features.',
-  oneRoomSelected: "You've selected 1 room with your preferred features.",
-  multipleRoomsSelected: "You've selected {count} rooms with your preferred features.",
-  noRoomsInfo: 'Select your preferred rooms and continue to complete your reservation.',
-  reviewInfo: 'Review your selections and continue to complete your reservation.',
-  proceedButton: 'Proceed to Reservation'
+  title: 'Unsere Unterkünfte',
+  browseMessage: 'Durchsuchen Sie unsere 8 verfügbaren Zimmer mit bevorzugten Ausstattungsmerkmalen.',
+  oneRoomSelected: 'Sie haben 1 Zimmer mit Ihren bevorzugten Ausstattungsmerkmalen ausgewählt.',
+  multipleRoomsSelected: 'Sie haben {count} Zimmer mit Ihren bevorzugten Ausstattungsmerkmalen ausgewählt.',
+  noRoomsInfo: 'Wählen Sie Ihre bevorzugten Zimmer aus und fahren Sie mit Ihrer Reservierung fort.',
+  reviewInfo: 'Überprüfen Sie Ihre Auswahl und fahren Sie mit Ihrer Reservierung fort.',
+  proceedButton: 'Zur Reservierung'
 };
 
 export const rooms: Room[] = [
   {
     id: 'room-1',
-    name: 'Room 1',
-    type: 'Double room',
-    capacity: '1 person/Couple',
-    view: 'Mountain view',
+    name: 'Zimmer 1',
+    type: 'Doppelzimmer',
+    capacity: '1 Person/Paar',
+    view: 'Bergblick',
     price: 85,
     images: [
       '/images/home/room1.jpg',
@@ -188,10 +188,10 @@ export const rooms: Room[] = [
   },
   {
     id: 'room-2', 
-    name: 'Room 2',
-    type: 'Double room',
-    capacity: '1 person/Couple',
-    view: 'Mountain view',
+    name: 'Zimmer 2',
+    type: 'Doppelzimmer',
+    capacity: '1 Person/Paar',
+    view: 'Bergblick',
     price: 95,
     images: [
       '/images/home/largeroom.jpg',
@@ -215,10 +215,10 @@ export const rooms: Room[] = [
   },
   {
     id: 'room-3', 
-    name: 'Room 3',
-    type: 'Family room',
-    capacity: 'Parents & 2 children',
-    view: 'Mountain view',
+    name: 'Zimmer 3',
+    type: 'Familienzimmer',
+    capacity: 'Eltern & 2 Kinder',
+    view: 'Bergblick',
     price: 120,
     images: [
       '/images/home/room1.jpg',
@@ -242,10 +242,10 @@ export const rooms: Room[] = [
   },
   {
     id: 'room-4', 
-    name: 'Room 4',
-    type: 'Double room',
-    capacity: '2 person',
-    view: 'Terrace view',
+    name: 'Zimmer 4',
+    type: 'Doppelzimmer',
+    capacity: '2 Personen',
+    view: 'Terrassenblick',
     price: 75,
     images: [
       '/images/home/largeroom.jpg',
@@ -269,10 +269,10 @@ export const rooms: Room[] = [
   },
   {
     id: 'room-5', 
-    name: 'Room 5',
-    type: 'Double room',
-    capacity: '2 person',
-    view: 'Mountain view',
+    name: 'Zimmer 5',
+    type: 'Doppelzimmer',
+    capacity: '2 Personen',
+    view: 'Bergblick',
     price: 110,
     images: [
       '/images/home/room1.jpg',
@@ -296,10 +296,10 @@ export const rooms: Room[] = [
   },
   {
     id: 'room-6', 
-    name: 'Room 6',
-    type: 'Double room',
-    capacity: '2 person',
-    view: 'Mountain view',
+    name: 'Zimmer 6',
+    type: 'Doppelzimmer',
+    capacity: '2 Personen',
+    view: 'Bergblick',
     price: 85,
     images: [
       '/images/home/largeroom.jpg',
@@ -323,10 +323,10 @@ export const rooms: Room[] = [
   },
   {
     id: 'room-7', 
-    name: 'Room 7',
-    type: 'Family room',
-    capacity: 'Parents & 2 children',
-    view: 'Mountain view',
+    name: 'Zimmer 7',
+    type: 'Familienzimmer',
+    capacity: 'Eltern & 2 Kinder',
+    view: 'Bergblick',
     price: 85,
     images: [
       '/images/home/room1.jpg',
@@ -350,10 +350,10 @@ export const rooms: Room[] = [
   },
   {
     id: 'room-8', 
-    name: 'Room 8',
-    type: 'Double room',
-    capacity: '1 person/2 person',
-    view: 'Mountain view',
+    name: 'Zimmer 8',
+    type: 'Doppelzimmer',
+    capacity: '1 Person/2 Personen',
+    view: 'Bergblick',
     price: 85,
     images: [
       '/images/home/largeroom.jpg',

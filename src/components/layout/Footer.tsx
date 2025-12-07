@@ -1,16 +1,22 @@
 "use client";
+import { useLocale } from 'next-intl';
 import Link from "next/link";
 import Image from "next/image";
+import { footerContent as footerContentEN } from '@/data/footer/footerData';
+import { footerContent as footerContentDE } from '@/data/footer/footerData.de';
 
 export default function Footer() {
+  const locale = useLocale();
+  const content = locale === 'de' ? footerContentDE : footerContentEN;
+
   return (
     <>
       {/* Newsletter Section */}
-      <section className="py-16 bg-[#B09244]">
+      <section className="py-16 bg-[#B09244] relative z-20">
         <div className="container mx-auto px-6">
           <div className="text-center">
             <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white uppercase tracking-wide">
-              NEWSLETTER SIGN UP
+              {content.newsletter.title}
             </h2>
 
             {/* Email Signup */}
@@ -18,11 +24,11 @@ export default function Footer() {
               <div className="flex flex-col md:flex-row gap-4 md:gap-0">
                 <input
                   type="email"
-                  placeholder="Your email"
+                  placeholder={content.newsletter.emailPlaceholder}
                   className="flex-1 px-6 py-4 text-gray-800 bg-white/10 border border-white placeholder-white text-white focus:outline-none focus:ring-2 focus:ring-white"
                 />
                 <button className="px-8 py-4 bg-transparent border border-white text-white hover:bg-white hover:text-amber-700 transition-colors font-medium uppercase tracking-wide">
-                  SUBSCRIBE
+                  {content.newsletter.subscribeButton}
                 </button>
               </div>
             </div>
@@ -30,15 +36,15 @@ export default function Footer() {
             {/* Social Media */}
             <div className="flex justify-center space-x-6 md:space-x-8">
               <a className="text-white hover:text-gray-200 transition-colors uppercase tracking-wide">
-                FACEBOOK
+                {content.socialMedia.facebook}
               </a>
               <span className="text-white">◊</span>
               <a className="text-white hover:text-gray-200 transition-colors uppercase tracking-wide">
-                INSTAGRAM
+                {content.socialMedia.instagram}
               </a>
               <span className="text-white">◊</span>
               <a className="text-white hover:text-gray-200 transition-colors uppercase tracking-wide">
-                TWITTER
+                {content.socialMedia.twitter}
               </a>
             </div>
           </div>
@@ -46,7 +52,7 @@ export default function Footer() {
       </section>
 
       {/* Footer Section */}
-      <footer className="py-16 bg-white">
+      <footer className="py-16 bg-white relative z-20">
         <div className="container mx-auto px-6">
 
           {/* Responsive Columns */}
@@ -55,25 +61,32 @@ export default function Footer() {
             {/* Get in Touch */}
             <div className="flex-1 text-center lg:text-left">
               <h3 className="text-2xl font-bold mb-6 uppercase tracking-wide text-primary">
-                GET IN TOUCH
+                {content.getInTouch.title}
               </h3>
 
               <div className="space-y-3 text-gray-600">
-                <p>Tel: +94 (0)81-2054262</p>
+                <p>
+                  <a
+                    href="tel:+94812054262"
+                    className="hover:text-amber-600 transition-colors"
+                  >
+                    {content.getInTouch.phone}
+                  </a>
+                </p>
 
                 <p>
                   <a
-                    href="mailto:info@shenayaresidence.com"
+                    href={`mailto:${content.getInTouch.email}`}
                     className="hover:text-amber-600 transition-colors"
                   >
-                    info@shenayaresidence.com
+                    {content.getInTouch.email}
                   </a>
                 </p>
 
                 <div className="pt-2">
-                  <p>No. 59, Hill Crest Green,</p>
-                  <p>Bowalawatta, 20000</p>
-                  <p>Kandy, Sri Lanka</p>
+                  <p>{content.getInTouch.address.line1}</p>
+                  <p>{content.getInTouch.address.line2}</p>
+                  <p>{content.getInTouch.address.line3}</p>
                 </div>
               </div>
             </div>
@@ -98,26 +111,26 @@ export default function Footer() {
             {/* Sitemap */}
             <div className="flex-1 text-center lg:text-right">
               <h3 className="text-2xl font-bold mb-6 uppercase tracking-wide text-primary">
-                SITEMAP
+                {content.sitemap.title}
               </h3>
 
               <div className="space-y-4 text-gray-600">
 
                 <div className="flex flex-wrap justify-center lg:justify-end gap-6">
-                  <Link href="/" className="hover:text-amber-600 transition-colors">Home</Link>
-                  <Link href="/shenaya" className="hover:text-amber-600 transition-colors">Shenaya</Link>
-                  <Link href="/rooms" className="hover:text-amber-600 transition-colors">Rooms</Link>
+                  <Link href="/" className="hover:text-amber-600 transition-colors">{content.sitemap.links.home}</Link>
+                  <Link href="/shenaya" className="hover:text-amber-600 transition-colors">{content.sitemap.links.shenaya}</Link>
+                  <Link href="/rooms" className="hover:text-amber-600 transition-colors">{content.sitemap.links.rooms}</Link>
                 </div>
 
                 <div className="flex flex-wrap justify-center lg:justify-end gap-6">
-                  <Link href="/services" className="hover:text-amber-600 transition-colors">Services</Link>
-                  <Link href="/gallery" className="hover:text-amber-600 transition-colors">Gallery</Link>
-                  <Link href="/team" className="hover:text-amber-600 transition-colors">Team</Link>
+                  <Link href="/services" className="hover:text-amber-600 transition-colors">{content.sitemap.links.services}</Link>
+                  <Link href="/gallery" className="hover:text-amber-600 transition-colors">{content.sitemap.links.gallery}</Link>
+                  <Link href="/team" className="hover:text-amber-600 transition-colors">{content.sitemap.links.team}</Link>
                 </div>
 
                 <div className="flex flex-wrap justify-center lg:justify-end gap-6">
-                  <Link href="/contact" className="hover:text-amber-600 transition-colors">Contact</Link>
-                  <Link href="/faq" className="hover:text-amber-600 transition-colors">FAQ</Link>
+                  <Link href="/contact" className="hover:text-amber-600 transition-colors">{content.sitemap.links.contact}</Link>
+                  <Link href="/faq" className="hover:text-amber-600 transition-colors">{content.sitemap.links.faq}</Link>
                 </div>
 
               </div>

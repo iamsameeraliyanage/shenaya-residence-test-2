@@ -17,6 +17,17 @@ export interface ReservationPageContent {
     special: string;
   };
   submitButton: string;
+  roomSelector: {
+    title: string;
+    selectRoomsLabel: string;
+    numberOfGuestsLabel: string;
+    selectRoomsPlaceholder: string;
+    numberOfGuestsPlaceholder: string;
+    roomSelected: string;
+    roomsSelected: string;
+    selectedRoomsTitle: string;
+    totalPerNight: string;
+  };
 }
 
 export const reservationPageContent: ReservationPageContent = {
@@ -26,7 +37,18 @@ export const reservationPageContent: ReservationPageContent = {
     contact: 'Contact Information', 
     special: 'Special Requests'
   },
-  submitButton: 'Complete Reservation'
+  submitButton: 'Complete Reservation',
+  roomSelector: {
+    title: 'Select Room(s) & Guests',
+    selectRoomsLabel: 'Select the room(s)',
+    numberOfGuestsLabel: 'Number of Guests',
+    selectRoomsPlaceholder: 'Select the room(s)',
+    numberOfGuestsPlaceholder: 'Select number of guests',
+    roomSelected: 'room selected',
+    roomsSelected: 'rooms selected',
+    selectedRoomsTitle: 'Selected Rooms:',
+    totalPerNight: 'Total per night:'
+  }
 };
 
 export interface RoomOption {

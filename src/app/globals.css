@@ -1,6 +1,9 @@
 /* Optimize Google Fonts loading */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+/* Flaticon Icons */
+@import url('https://cdn-uicons.flaticon.com/2.6.0/uicons-thin-straight/css/uicons-thin-straight.css');
+
 @import "tailwindcss";
 
 /* PP Pangaia Font Family - Custom font declarations */
